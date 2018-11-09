@@ -16,6 +16,31 @@ var botParams = {
   icon_emoji: ':cat:'
 };
 
+function buildMessage(data) {
+  if (!data) {
+    return Promise.resolve(messages.GITHUB_ERROR);
+  }
+
+  if (data.hasOwnProperty('action') && data['action'] == 'review_requested') {
+    // it's a pull request review request event
+
+    let s = `New Review Request:\n${data['pull_request']['url']}`;
+    return Promise.resolve(s);
+  } else if (data.hasOwnProperty('comment')) {
+    // it's a pull request comment event
+
+    let s = `Comment *${data['action']}*:\n${data['pull_request']['url']}`;
+    return Promise.resolve(s);
+  }
+}
+
+function notifyToSlackChannel(message) {
+  // bot.postMessageToChannel('test-findlimit', message, botParams);
+  axios.post('https://hooks.slack.com/services/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', {
+    "text": message
+  });
+}
+
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -43,29 +68,3 @@ app.post('/pr', (req, res) => {
 
 const port = env.PORT | 3000;
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
-
-
-function buildMessage(data) {
-  if (!data) {
-    return Promise.resolve(messages.GITHUB_ERROR);
-  }
-
-  if (data.hasOwnProperty('action') && data['action'] == 'review_requested') {
-    // it's a pull request review request event
-
-    let s = `New Review Request:\n${data['pull_request']['url']}`;
-    return Promise.resolve(s);
-  } else if (data.hasOwnProperty('comment')) {
-    // it's a pull request comment event
-
-    let s = `Comment *${data['action']}*:\n${data['pull_request']['url']}`;
-    return Promise.resolve(s);
-  }
-}
-
-function notifyToSlackChannel(message) {
-  // bot.postMessageToChannel('test-findlimit', message, botParams);
-  axios.post('https://hooks.slack.com/services/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', {
-    "text": message
-  });
-}
