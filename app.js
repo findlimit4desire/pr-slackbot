@@ -3,7 +3,6 @@ const Slackbot = require('slackbots');
 const express = require('express');
 const bodyParser = require('body-parser');
 const messages = require('./lib/message');
-const axios = require('axios');
 
 const env = process.env;
 
