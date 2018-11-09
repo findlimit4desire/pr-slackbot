@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config({ silent: true });
 const Slackbot = require('slackbots');
 const express = require('express');
 const bodyParser = require('body-parser');
