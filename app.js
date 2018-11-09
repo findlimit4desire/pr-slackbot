@@ -18,15 +18,15 @@ app.use(bodyParser.urlencoded({
 }));
 
 // HomePage
-app.get("/", (req, res) => {
-  res.send("HomePage");
+app.get('/', (req, res) => {
+  res.send('HomePage');
 });
 
 // PR Hook
-app.post("/pr", (req, res) => {
-  console.log("pr: " + req.body["title"]);
+app.post('/pr', (req, res) => {
+  console.log('pr: ' + req.body['title']);
 
-  res.send("Good");
+  res.send('Good');
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
