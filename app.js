@@ -3,7 +3,6 @@ const Slackbot = require('slackbots');
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const port = 3000;
 const env = process.env;
 
 const bot = new Slackbot({
@@ -29,4 +28,5 @@ app.post('/pr', (req, res) => {
   res.send('Good');
 });
 
+const port = env.PORT | 3000;
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
