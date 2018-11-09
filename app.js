@@ -50,10 +50,10 @@ function buildMessage(data) {
     return Promise.resolve(messages.GITHUB_ERROR);
   }
 
-  if (data.hasOwnProperty('review')) {
-    // it's a pull request review event
+  if (data.hasOwnProperty('action') && data['action'] == 'review_requested') {
+    // it's a pull request review request event
 
-    let s = `Review *${data['action']}*:\n${data['pull_request']['url']}`;
+    let s = `New Review Request:\n${data['pull_request']['url']}`;
     return Promise.resolve(s);
   } else if (data.hasOwnProperty('comment')) {
     // it's a pull request comment event
