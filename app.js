@@ -2,7 +2,7 @@ require('dotenv').config({ silent: true });
 const Slackbot = require('slackbots');
 const express = require('express');
 const bodyParser = require('body-parser');
-const messages = require('./lib/message');
+// const messages = require('./lib/message');
 
 const env = process.env;
 
