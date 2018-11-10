@@ -5,10 +5,6 @@ const msgUtility = require('./lib/message');
 
 const slackUrlMap = JSON.parse(process.env.PROJECT_SLACK_URL);
 
-function getSlackUrl(project) {
-  
-}
-
 const msg = new msgUtility();
 
 var app = express();
