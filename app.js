@@ -2,6 +2,9 @@
 // const Slackbot = require('slackbots');
 const express = require('express');
 const bodyParser = require('body-parser');
+const msgUtility = require('./lib/message');
+
+var msg = new msgUtility();
 
 var app = express();
 app.use(bodyParser.json());
@@ -18,9 +21,9 @@ app.post('/pr', (req, res) => {
   var s = `Review *${req.body['action']}*:\n${req.body['pull_request']['url']}`;
   console.log(s);
 
-  // buildMessage(req.body)
+  // msg.buildMessage(req.body)
   //   .then((message) => {
-  //     notifyToSlackChannel(message);
+  //     msg.notifyToSlackChannel(message);
   //   });
 
   res.send('Good');
