@@ -1,25 +1,18 @@
 // require('dotenv').config({ silent: true });
 // const Slackbot = require('slackbots');
 const express = require('express');
-const bodyParser = require('body-parser');
-
-const env = process.env;
-
-// const bot = new Slackbot({
-//   token: env.SLACK_TOKEN,
-//   name: env.SLACK_BOT_NAME || 'PR Bot',
-// });
+// const bodyParser = require('body-parser');
 
 var app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({
+//   extended: true
+// }));
 
 // HomePage
-app.get('/', (req, res) => {
-  res.send('HomePage');
-});
+// app.get('/', (req, res) => {
+//   res.send('HomePage');
+// });
 
-const port = env.PORT | 3000;
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.set('port', (process.env.PORT || 5000));
+app.listen(app.get('port'));
