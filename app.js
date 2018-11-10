@@ -40,8 +40,8 @@ app.get('/', (req, res) => {
 //   // res.send('Good');
 // });
 
-// const port = env.PORT | 3000;
-// app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+const port = env.PORT | 3000;
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 // // function buildMessage(data) {
 // //   if (!data) {
