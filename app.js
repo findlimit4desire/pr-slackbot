@@ -18,13 +18,13 @@ app.get('/', (req, res) => {
 });
 
 app.post('/pr', (req, res) => {
-  var s = `Review *${req.body['action']}*:\n${req.body['pull_request']['url']}`;
-  console.log(s);
+  // var s = `Review *${req.body['action']}*:\n${req.body['pull_request']['url']}`;
+  // console.log(s);
 
-  // msg.buildMessage(req.body)
-  //   .then((message) => {
-  //     msg.notifyToSlackChannel(message);
-  //   });
+  msg.buildMessage(req.body)
+    .then((message) => {
+      msg.notifyToSlackChannel(message);
+    });
 
   res.send('Good');
 });
