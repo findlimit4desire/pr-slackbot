@@ -14,5 +14,17 @@ app.get('/', (req, res) => {
   res.send('HomePage');
 });
 
+app.post('/pr', (req, res) => {
+  var s = `Review *${req.body['action']}*:\n${req.body['pull_request']['url']}`;
+  console.log(s);
+
+  // buildMessage(req.body)
+  //   .then((message) => {
+  //     notifyToSlackChannel(message);
+  //   });
+
+  res.send('Good');
+});
+
 app.set('port', (process.env.PORT || 5000));
 app.listen(app.get('port'));
