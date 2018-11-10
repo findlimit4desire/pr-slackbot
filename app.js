@@ -10,9 +10,9 @@ app.use(bodyParser.urlencoded({
 }));
 
 // HomePage
-// app.get('/', (req, res) => {
-//   res.send('HomePage');
-// });
+app.get('/', (req, res) => {
+  res.send('HomePage');
+});
 
 app.set('port', (process.env.PORT || 5000));
 app.listen(app.get('port'));
