@@ -10,10 +10,6 @@ const env = process.env;
 //   name: env.SLACK_BOT_NAME || 'PR Bot',
 // });
 
-var botParams = {
-  icon_emoji: ':cat:'
-};
-
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
